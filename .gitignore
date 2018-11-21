@@ -1,5 +1,5 @@
 # Ignore the image database
-Images/*
+*.jpg
 
 # Ignore pycharm configuration files
 .idea/*
