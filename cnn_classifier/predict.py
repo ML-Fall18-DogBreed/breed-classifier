@@ -1,4 +1,4 @@
-from cnn_classifier.create_model import create_cnn_model
+from create_model import create_cnn_model
 import numpy as np
 import cv2
 import pickle

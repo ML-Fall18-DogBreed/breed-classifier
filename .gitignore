@@ -3,3 +3,6 @@
 
 # Ignore pycharm configuration files
 .idea/*
+
+# No bytecode
+*.pyc
