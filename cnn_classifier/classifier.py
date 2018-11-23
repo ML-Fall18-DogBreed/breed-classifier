@@ -37,8 +37,8 @@ validation_generator = test_datagen.flow_from_directory(
 
 labels = (train_generator.class_indices)
 label_map = dict((v,k) for k,v in labels.items())
-with open('labels.pkl', 'wb') as f:
-    pickle.dump(label_map, f)
+with open('out/labels.pkl', 'wb') as f:
+    pickle.dump(label_map, f, pickle.HIGHEST_PROTOCOL)
 
 model.fit_generator(
         train_generator,
@@ -47,4 +47,4 @@ model.fit_generator(
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 
-model.save_weights('classifier_weights.h5')  # always save your weights after training or during training
+model.save_weights('out/model_weights.h5')  # always save your weights after training or during training

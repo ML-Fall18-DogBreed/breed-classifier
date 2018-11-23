@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --output=simple.out #SBATCH --error=simple.err
+#SBATCH --output=out/ace-job.out #SBATCH --error=out/errors.err
 #SBATCH --gres=gpu:2
 #SBATCH -t 0:45:00
 
