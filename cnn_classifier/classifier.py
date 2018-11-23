@@ -8,7 +8,7 @@ model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
-batch_size = 500
+batch_size = 32
 
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(
@@ -43,7 +43,7 @@ with open('out/labels.pkl', 'wb') as f:
 model.fit_generator(
         train_generator,
         steps_per_epoch=2000 // batch_size,
-        epochs=50,
+        epochs=150,
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 

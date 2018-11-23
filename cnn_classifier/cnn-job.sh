@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH --output=out/ace-job.out #SBATCH --error=out/errors.err
 #SBATCH --gres=gpu:2
-#SBATCH -t 0:45:00
+#SBATCH --mem 64G
+#SBATCH -t 1:30:00
 
 module load cudnn
 module load cuda90/toolkit
