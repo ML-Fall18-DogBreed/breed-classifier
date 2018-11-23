@@ -1,27 +1,8 @@
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D
-from keras.layers import Activation, Dropout, Flatten, Dense
+from cnn_classifier.create_model import create_cnn_model
 from keras.preprocessing.image import ImageDataGenerator
+import pickle
 
-model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=(150, 150, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-
-model.add(Conv2D(32, (3, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-
-model.add(Conv2D(64, (3, 3)))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-
-model.add(Flatten())  # this converts our 3D feature maps to 1D feature vectors
-model.add(Dense(64))
-model.add(Activation('relu'))
-model.add(Dropout(0.5))
-model.add(Dense(120))
-model.add(Activation('softmax'))
+model = create_cnn_model()
 
 model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
@@ -54,6 +35,11 @@ validation_generator = test_datagen.flow_from_directory(
         target_size=(150, 150),
         batch_size=batch_size)
 
+labels = (train_generator.class_indices)
+label_map = dict((v,k) for k,v in labels.items())
+with open('labels.pkl', 'wb') as f:
+    pickle.dump(label_map, f)
+
 model.fit_generator(
         train_generator,
         steps_per_epoch=2000 // batch_size,
@@ -61,4 +47,4 @@ model.fit_generator(
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 
-model.save_weights('first_try.h5')  # always save your weights after training or during training
+model.save_weights('classifier_weights.h5')  # always save your weights after training or during training
