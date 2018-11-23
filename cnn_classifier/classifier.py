@@ -8,7 +8,7 @@ model.compile(loss='categorical_crossentropy',
               optimizer='rmsprop',
               metrics=['accuracy'])
 
-batch_size = 200
+batch_size = 500
 
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(

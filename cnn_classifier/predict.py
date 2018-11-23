@@ -16,4 +16,4 @@ prediction = model.predict_classes(img1)
 with open('out/labels.pkl', 'rb') as f:
     label_map = pickle.load(f)
 
-print(label_map[prediction])
+print(label_map[prediction[0]])
