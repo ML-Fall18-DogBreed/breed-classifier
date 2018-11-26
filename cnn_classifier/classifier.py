@@ -1,6 +1,7 @@
 from create_model import create_cnn_model
 from keras.preprocessing.image import ImageDataGenerator
 import pickle
+import datetime # For naming files
 
 model = create_cnn_model()
 
@@ -48,4 +49,4 @@ model.fit_generator(
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 
-model.save_weights('out/model_weights.h5')  # always save your weights after training or during training
+model.save_weights('out/model_weights%s.h5' % datetime.date.today().strftime('%b-%d-%H:%M'))
