@@ -7,10 +7,10 @@ model = create_cnn_model()
 
 model.load_weights('out/model_weights.h5')
 
-img1 = cv2.imread('../Images/n02085620-Chihuahua/n02085620_7.jpg')
-img1 = cv2.resize(img1, (150,150))
+img1 = cv2.imread('../Images/n02086910-papillon/n02086910_26.jpg')
+img1 = cv2.resize(img1, (150,200))
 
-img1 = np.array(img1).reshape((1, 150, 150, 3))
+img1 = np.array(img1).reshape((1, 150, 200, 3))
 prediction = model.predict_classes(img1)
 
 with open('out/labels.pkl', 'rb') as f:

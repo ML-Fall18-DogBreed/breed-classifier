@@ -5,7 +5,7 @@ import pickle
 model = create_cnn_model()
 
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
+              optimizer='sgd',
               metrics=['accuracy'])
 
 batch_size = 32
@@ -13,8 +13,8 @@ batch_size = 32
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(
         rescale=1./255,
-        shear_range=0.2,
-        zoom_range=0.2,
+        # shear_range=0.2,
+        # zoom_range=0.2,
         horizontal_flip=True)
 
 # this is the augmentation configuration we will use for testing:
@@ -40,10 +40,11 @@ label_map = dict((v,k) for k,v in labels.items())
 with open('out/labels.pkl', 'wb') as f:
     pickle.dump(label_map, f, pickle.HIGHEST_PROTOCOL)
 
+
 model.fit_generator(
         train_generator,
         steps_per_epoch=2000 // batch_size,
-        epochs=100,
+        epochs=250,
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 

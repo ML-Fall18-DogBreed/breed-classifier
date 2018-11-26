@@ -39,3 +39,14 @@ used by the algorithm. We may want to segment them differently later.
 > Note that any and all image files ending with .jpg are ignored
 in this repository, so nothing in Images/ or data/ will ever be
 pushed. (This is probably faster than having them all in the repo anyways.)
+
+## Running the code
+Run `classifier.py` to train the network. This will save the model weights
+to `out/model_weights.h5`. These can then be loaded in to test the 
+model without having to train it again. An example of this is shown
+in `predict.py`.
+
+To run on the Ace cluster, change directory to `cnn_classifier` and
+run `$ sbatch cnn-job.sh`. This will launch a job running the classifier script 
+that should be significantly faster and more efficient than running on a local
+machine.
