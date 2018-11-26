@@ -6,7 +6,7 @@ import datetime # For naming files
 model = create_cnn_model()
 
 model.compile(loss='categorical_crossentropy',
-              optimizer='sgd',
+              optimizer='RMSprop',
               metrics=['accuracy'])
 
 batch_size = 32
