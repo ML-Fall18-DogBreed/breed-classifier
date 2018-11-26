@@ -4,7 +4,7 @@ from keras.layers import Activation, Dropout, Flatten, Dense
 
 def create_cnn_model():
     model = Sequential()
-    model.add(Conv2D(16, (3, 3), input_shape=(150, 150, 3)))
+    model.add(Conv2D(16, (3, 3), input_shape=(150, 200, 3)))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
 
