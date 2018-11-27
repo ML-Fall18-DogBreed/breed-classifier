@@ -45,8 +45,9 @@ with open('out/labels.pkl', 'wb') as f:
 model.fit_generator(
         train_generator,
         steps_per_epoch=2000 // batch_size,
-        epochs=250,
+        epochs=150,
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 
 model.save_weights('out/model_weights%s.h5' % datetime.date.today().strftime('%b-%d-%H%M'))
+model.save('out/model.h5')
