@@ -49,4 +49,4 @@ model.fit_generator(
         validation_data=validation_generator,
         validation_steps=800 // batch_size)
 
-model.save_weights('out/model_weights%s.h5' % datetime.date.today().strftime('%b-%d-%H:%M'))
+model.save_weights('out/model_weights%s.h5' % datetime.date.today().strftime('%b-%d-%H%M'))
