@@ -9,7 +9,7 @@ model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
-batch_size = 32
+batch_size = 20
 
 # this is the augmentation configuration we will use for training
 train_datagen = ImageDataGenerator(
@@ -47,7 +47,7 @@ checkpointer = ModelCheckpoint(filepath='out_trang/weights.bestaugmented.from_sc
 model.fit_generator(
         train_generator,
         steps_per_epoch=2000// batch_size,
-        epochs=150,
+        epochs=30,
         validation_data=validation_generator,
         validation_steps=800 // batch_size,
         callbacks=[checkpointer])
