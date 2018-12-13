@@ -84,6 +84,10 @@ All in all, this looks something like the code below:
     model.add(Activation('softmax'))
 ```
 
+This representation is also summarized by the following diagram:
+
+![cnn-diagram](CNN.png)
+
 ## Results
 The table below has the results for each of the trials so far based on the parameters used. 
 
